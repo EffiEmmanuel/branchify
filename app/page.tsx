@@ -1,10 +1,6 @@
 "use client";
-//
-import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { MdClose, MdOutlineMenu } from "react-icons/md";
-import LocomotiveScroll, { ScrollElement } from "locomotive-scroll";
 const Fade = require("react-reveal/Fade");
 
 // Components
@@ -13,33 +9,30 @@ import NavigationBar from "@/components/NavigationBar";
 
 // Images
 import effi from "../public/assets/images/effi.jpg";
+import linkPreview from "../public/assets/images/link-preview.webp";
 
 export default function Home() {
   // Locomotive scroll
-  let locomotiveScrollRef = useRef(null);
-  useEffect(() => {
-    if (locomotiveScrollRef.current) {
-      const scroll: any = new LocomotiveScroll({
-        el: locomotiveScrollRef.current,
-        smooth: true,
-      });
-    }
-  }, [locomotiveScrollRef]);
+  // let locomotiveScrollRef = useRef(null);
+  // useEffect(() => {
+  //   if (locomotiveScrollRef.current) {
+  //     const scroll: any = new LocomotiveScroll({
+  //       el: locomotiveScrollRef.current,
+  //       smooth: true,
+  //     });
+  //   }
+  // }, [locomotiveScrollRef]);
 
   return (
     <div className="">
-      <div
-        data-scroll-container
-        ref={locomotiveScrollRef}
-        className="doodleBgBlack min-h-screen py-14 lg:px-20 px-7"
-      >
+      <div className="doodleBgBlack min-h-screen py-14 lg:px-20 px-7">
         {/* NAVIGATION BAR */}
         <NavigationBar />
 
         {/* HERO SECTION */}
-        <section data-scroll-section className="text-white mt-32">
+        <section className="text-white mt-32">
           {/* HEADLINE AND TAG */}
-          <div data-scroll>
+          <div>
             <h1 className="text-4xl lg:text-5xl font-extrabold max-w-2xl leading-[55px]">
               Link in bio has never looked prettier and easier.
             </h1>
@@ -51,14 +44,20 @@ export default function Home() {
           </div>
 
           {/* SIGN UP FORM */}
-          <div data-scroll>
+          <div>
             <HomeBranchNameForm blackButton={false} tintInput={false} />
           </div>
         </section>
 
         {/* CREATE AND CUSTOMIZE YOUR BRANCH */}
-        <section data-scroll-section className="mt-32 min-h-screen">
-          <div></div>
+        <section className="mt-32 min-h-screen flex flex-col-reverse lg:flex-row">
+          <div className="lg:my-auto mx-auto w-2/4 h-1/2 mt-20">
+            <Image
+              alt="Your unique link with branchify"
+              src={linkPreview}
+              className="w-full h-full"
+            />
+          </div>
           <div className="lg:block lg:text-left flex flex-col justify-center text-center">
             <h2 className="text-branchifyPink text-3xl lg:text-4xl font-bold">
               Create and customize your branch in minutes
@@ -70,6 +69,9 @@ export default function Home() {
             {/* CTA: Get started for free */}
             <div className="mt-10">
               <Link
+                style={{
+                  zIndex: 3,
+                }}
                 href="/"
                 className="rounded-lg px-9 py-5 text-branchifyBlack font-semibold bg-branchifyPink"
               >
@@ -81,12 +83,14 @@ export default function Home() {
       </div>
 
       {/* CREATE PACKAGES FOR THE SERVICES YOU OFFER */}
-      <section
-        data-scroll
-        data-scroll-speed="2"
-        className="min-h-screen doodleBgPink py-14 lg:px-20 px-7"
-      >
-        <div></div>
+      <section className="min-h-screen doodleBgPink py-14 lg:px-20 px-7 flex flex-col-reverse lg:flex-row">
+        <div className="lg:my-auto mx-auto w-2/4 h-1/2 mt-20">
+          <Image
+            alt="Your unique link with branchify"
+            src={linkPreview}
+            className="w-full h-full"
+          />
+        </div>
         <div className="lg:block lg:text-left flex flex-col justify-center text-center">
           <h2 className="text-branchifyBlack text-3xl lg:text-4xl font-bold">
             Create and customize your branch in minutes
@@ -98,6 +102,9 @@ export default function Home() {
           {/* CTA: Get started for free */}
           <div className="mt-10">
             <Link
+              style={{
+                zIndex: 3,
+              }}
               href="/"
               className="rounded-lg px-9 py-5 text-white font-semibold bg-branchifyBlack"
             >
@@ -108,28 +115,37 @@ export default function Home() {
       </section>
 
       {/* ANALYTICS THAT GIVE YOU INSIGHTS */}
-      <section
-        data-scroll-section
-        className="min-h-screen doodleBgWhite py-14 lg:px-20 px-7"
-      >
+      <section className="min-h-screen doodleBgWhite py-14 lg:px-20 px-7">
         {/* FIRST PART OF THIS SECTION */}
-        <div></div>
-        <div className="lg:block lg:text-left flex flex-col justify-center text-center">
-          <h2 className="text-branchifyBlack text-3xl lg:text-4xl font-bold">
-            Analytics that give you insight
-          </h2>
-          <p className="text-branchifyBranch mt-5">
-            Branch out to your TikTok, Instagram, Twitter, service packages,
-            events and more with just one fully customizable link in bio.
-          </p>
-          {/* CTA: Get started for free */}
-          <div className="mt-10">
-            <Link
-              href="/"
-              className="rounded-lg px-9 py-5 text-white font-semibold bg-branchifyBlack"
-            >
-              Get started for free
-            </Link>
+        <div className="flex flex-col-reverse lg:flex-row">
+          <div className="lg:my-auto mx-auto w-2/4 h-1/2 mt-20">
+            <Image
+              alt="Your unique link with branchify"
+              src={linkPreview}
+              className="w-full h-full"
+            />
+          </div>
+
+          <div className="lg:block lg:text-left flex flex-col justify-center text-center">
+            <h2 className="text-branchifyBlack text-3xl lg:text-4xl font-bold">
+              Analytics that give you insight
+            </h2>
+            <p className="text-branchifyBranch mt-5">
+              Branch out to your TikTok, Instagram, Twitter, service packages,
+              events and more with just one fully customizable link in bio.
+            </p>
+            {/* CTA: Get started for free */}
+            <div className="mt-10">
+              <Link
+                style={{
+                  zIndex: 3,
+                }}
+                href="/"
+                className="rounded-lg px-9 py-5 text-white font-semibold bg-branchifyBlack"
+              >
+                Get started for free
+              </Link>
+            </div>
           </div>
         </div>
 
@@ -174,10 +190,7 @@ export default function Home() {
       </section>
 
       {/* START BRANCHING AND FOOTER */}
-      <section
-        data-scroll-section
-        className="min-h-screen bg-branchifyBlack py-14 lg:px-20 px-7 flex flex-col justify-center align-middle"
-      >
+      <section className="min-h-screen bg-branchifyBlack py-14 lg:px-20 px-7 flex flex-col justify-center align-middle">
         {/* BLUE BOX */}
         <div className="doodleBgBlueBlack h-[700px] w-full my-auto rounded-lg p-12 flex flex-col justify-center align-middle text-white">
           {/* HEADLINE */}
@@ -205,19 +218,54 @@ export default function Home() {
               {/* LINKS */}
               <ul className="mt-2">
                 <li>
-                  <Link href="/">Blog</Link>
+                  <Link
+                    style={{
+                      zIndex: 3,
+                    }}
+                    href="/"
+                  >
+                    Blog
+                  </Link>
                 </li>
                 <li>
-                  <Link href="/">About</Link>
+                  <Link
+                    style={{
+                      zIndex: 3,
+                    }}
+                    href="/"
+                  >
+                    About
+                  </Link>
                 </li>
                 <li>
-                  <Link href="/">Careers</Link>
+                  <Link
+                    style={{
+                      zIndex: 3,
+                    }}
+                    href="/"
+                  >
+                    Careers
+                  </Link>
                 </li>
                 <li>
-                  <Link href="/">Contact</Link>
+                  <Link
+                    style={{
+                      zIndex: 3,
+                    }}
+                    href="/"
+                  >
+                    Contact
+                  </Link>
                 </li>
                 <li>
-                  <Link href="/">Pricing</Link>
+                  <Link
+                    style={{
+                      zIndex: 3,
+                    }}
+                    href="/"
+                  >
+                    Pricing
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -232,10 +280,24 @@ export default function Home() {
                   {/* LINKS */}
                   <ul className="mt-2">
                     <li>
-                      <Link href="/">FAQs</Link>
+                      <Link
+                        style={{
+                          zIndex: 3,
+                        }}
+                        href="/"
+                      >
+                        FAQs
+                      </Link>
                     </li>
                     <li>
-                      <Link href="/">Report a problem</Link>
+                      <Link
+                        style={{
+                          zIndex: 3,
+                        }}
+                        href="/"
+                      >
+                        Report a problem
+                      </Link>
                     </li>
                   </ul>
                 </div>
@@ -245,10 +307,24 @@ export default function Home() {
                   {/* LINKS */}
                   <ul className="mt-2">
                     <li>
-                      <Link href="/">Privacy Policy</Link>
+                      <Link
+                        style={{
+                          zIndex: 3,
+                        }}
+                        href="/"
+                      >
+                        Privacy Policy
+                      </Link>
                     </li>
                     <li>
-                      <Link href="/">Terms of Service</Link>
+                      <Link
+                        style={{
+                          zIndex: 3,
+                        }}
+                        href="/"
+                      >
+                        Terms of Service
+                      </Link>
                     </li>
                   </ul>
                 </div>

@@ -49,7 +49,7 @@ function NavigationBar({}: Props) {
         style={{
           top: cursorTopValue,
           left: cursorLeftValue,
-          zIndex: 3,
+          zIndex: 1,
         }}
       ></div>
       {/* MOBILE NAVBAR */}

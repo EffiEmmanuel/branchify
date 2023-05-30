@@ -44,7 +44,12 @@ function HomeBranchNameForm({ blackButton, tintInput }: Props) {
             placeholder="johndoe"
             value={values.branchName}
             onChange={handleChange}
-            className={`w-full py-5 focus:outline-0 px-2 my-auto ${tintInput && "bg-gray-100"}`}
+            style={{
+              zIndex: 3,
+            }}
+            className={`text-branchifyBlack w-full py-5 focus:outline-0 px-2 my-auto ${
+              tintInput && "bg-gray-100"
+            }`}
           />
         </div>
 
@@ -55,6 +60,9 @@ function HomeBranchNameForm({ blackButton, tintInput }: Props) {
           className={`${
             blackButton ? "bg-branchifyBlack" : "bg-blueBlack"
           } py-5 px-7 text-white rounded-lg`}
+          style={{
+            zIndex: 3,
+          }}
         >
           Create my free branch
         </button>
