@@ -51,7 +51,7 @@ function NavigationBar({}) {
       )}
 
       {/* DESKTOP NAVBAR */}
-      <nav className="flex justify-between relative z-20 bg-white p-4 lg:p-5 lg:px-7 rounded-full">
+      <nav data-scroll data-scroll-position="top" data-scroll-target="#hero" data-scroll-speed="8" className="flex justify-between relative z-20 bg-white p-4 lg:p-5 lg:px-7 rounded-full">
         <div className="flex gap-x-10">
           <img src={BranchifyLogo} alt="Branchify" className="w-28 lg:w-36" />
 
