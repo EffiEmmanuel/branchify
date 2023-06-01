@@ -7,6 +7,12 @@ import BranchifyLogo from "../../../../src/assets/logos/logobranchify.svg";
 
 function NavigationBar({}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // USEEFFECT HOOK: Listen for when page is at the top so navbar can become visible
+  useEffect(() => {
+    console.log((window.scrollY = "px"));
+  }, [window.scrollY]);
+
   return (
     <div>
       {/* MOBILE NAVBAR */}
@@ -51,9 +57,17 @@ function NavigationBar({}) {
       )}
 
       {/* DESKTOP NAVBAR */}
-      <nav data-scroll data-scroll-position="top" data-scroll-target="#hero" data-scroll-speed="8" className="flex justify-between relative z-20 bg-white p-4 lg:p-5 lg:px-7 rounded-full">
+      <nav
+        data-scroll
+        data-scroll-position="top"
+        data-scroll-target="#hero"
+        data-scroll-speed="10"
+        className="flex justify-between relative z-20 bg-white p-4 lg:p-5 lg:px-7 rounded-full"
+      >
         <div className="flex gap-x-10">
-          <img src={BranchifyLogo} alt="Branchify" className="w-28 lg:w-36" />
+          <a href="/" className="w-28 lg:w-36">
+            <img src={BranchifyLogo} alt="Branchify" className="w-full h-full" />
+          </a>
 
           <div className="lg:flex w-full hidden my-auto">
             <ul className="align-middle flex gap-x-9 text-gray-500 font-semibold">
