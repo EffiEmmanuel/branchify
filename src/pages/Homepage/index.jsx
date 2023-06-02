@@ -17,6 +17,9 @@ function Homepage() {
   const options = {
     smooth: true,
     // multiplier: 3,
+    smartphone: {
+      smooth: true
+    }
   };
 
   return (
@@ -27,7 +30,7 @@ function Homepage() {
       <div data-scroll-container ref={locomotiveScrollRef}>
         <div
           id="hero"
-          className="doodleBgBlack min-h-screen py-14 lg:px-20 px-7"
+          className="doodleBgBlack relative min-h-screen py-14 lg:px-20 px-7"
         >
           {/* NAVIGATION BAR */}
           <NavigationBar />
@@ -36,54 +39,60 @@ function Homepage() {
           <section className="text-white mt-32 flex justify-between align-middle">
             <div className="my-auto">
               {/* HEADLINE AND TAG */}
-              <div data-scroll>
-                <h1
-                  data-scroll
-                  data-scroll-speed="5"
-                  data-scroll-position="top"
-                  className="text-4xl lg:text-6xl lg:leading-[4rem] leading-[4rem] font-extrabold max-w-2xl"
-                >
-                  Link in bio has never looked prettier and easier.
-                </h1>
-                <p
-                  data-scroll
-                  data-scroll-speed="5"
-                  data-scroll-position="top"
-                  className="mt-2 max-w-2xl leading-7"
-                >
-                  One link that links to everything you create and sell from
-                  your Instagram, TikTok, Twitter, YouTube and other social
-                  media profiles.
-                </p>
-              </div>
+              <Fade duration={1000} delay={200}>
+                <div data-scroll>
+                  <h1
+                    data-scroll
+                    data-scroll-speed="5"
+                    data-scroll-position="top"
+                    className="text-4xl lg:text-6xl lg:leading-[4rem] leading-[4rem] font-extrabold max-w-2xl"
+                  >
+                    Link in bio has never looked prettier and easier.
+                  </h1>
+                  <p
+                    data-scroll
+                    data-scroll-speed="5"
+                    data-scroll-position="top"
+                    className="mt-2 max-w-2xl leading-7"
+                  >
+                    One link that links to everything you create and sell from
+                    your Instagram, TikTok, Twitter, YouTube and other social
+                    media profiles.
+                  </p>
+                </div>
+              </Fade>
 
               {/* SIGN UP FORM */}
-              <div
-                data-scroll
-                data-scroll-speed="5"
-                data-scroll-position="top"
-                className="lg:max-w-lg"
-              >
-                <HomeBranchNameForm blackButton={false} tintInput={false} />
-              </div>
+              <Fade up duration={1000} delay={300}>
+                <div
+                  data-scroll
+                  data-scroll-speed="5"
+                  data-scroll-position="top"
+                  className="lg:max-w-lg"
+                >
+                  <HomeBranchNameForm blackButton={false} tintInput={false} />
+                </div>
+              </Fade>
             </div>
 
-            <div
-              data-scroll
-              className="hidden lg:flex lg:my-auto justify-start md:mx-0 mx-auto w-2/4 h-1/2 mt-20 md:w-1/4 md:h-[400px] md:my-auto"
-            >
-              <img
+            <Fade duration={1000}>
+              <div
                 data-scroll
-                data-scroll-speed="2"
-                data-scroll-position="top"
-                alt="Your unique link with branchify"
-                src={linkPreview}
-                className="w-full h-full"
-                style={{
-                  objectFit: "contain",
-                }}
-              />
-            </div>
+                className="hidden lg:flex lg:my-auto justify-start md:mx-0 mx-auto w-2/4 h-1/2 mt-20 md:w-1/4 md:h-[400px] md:my-auto"
+              >
+                <img
+                  data-scroll
+                  data-scroll-speed="2"
+                  data-scroll-position="top"
+                  alt="Your unique link with branchify"
+                  src={linkPreview}
+                  className="w-full h-full"
+                  style={{
+                    objectFit: "contain",
+                  }}
+                />
+              </div>
+            </Fade>
           </section>
         </div>
 

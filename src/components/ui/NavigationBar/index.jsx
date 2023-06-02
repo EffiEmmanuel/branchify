@@ -13,8 +13,28 @@ function NavigationBar({}) {
     console.log((window.scrollY = "px"));
   }, [window.scrollY]);
 
+  // STICKY NAV CONFIG
+  const [stickyNavbar, setStickyNavbar] = useState("");
+  function handleNavStick() {
+    // Check if window is undefined
+    if (window !== undefined) {
+      window.scrollY > 200
+        ? setStickyNavbar("fixed top-0 left-0 z-50")
+        : setStickyNavbar("relative");
+    }
+  }
+  useEffect(() => {
+    // Add a scoll event listener to window
+    window.addEventListener("scroll", handleNavStick);
+
+    // Remove event listener from window
+    return () => {
+      window.removeEventListener("scroll", handleNavStick);
+    };
+  });
+
   return (
-    <div>
+    <div className={`${stickyNavbar}`}>
       {/* MOBILE NAVBAR */}
       {isMenuOpen && (
         <Fade right duration={500} opposite={true}>
@@ -57,85 +77,91 @@ function NavigationBar({}) {
       )}
 
       {/* DESKTOP NAVBAR */}
-      <nav
-        data-scroll
-        data-scroll-position="top"
-        data-scroll-target="#hero"
-        data-scroll-speed="10"
-        className="flex justify-between relative z-20 bg-white p-4 lg:p-5 lg:px-7 rounded-full"
-      >
-        <div className="flex gap-x-10">
-          <a href="/" className="w-28 lg:w-36">
-            <img src={BranchifyLogo} alt="Branchify" className="w-full h-full" />
-          </a>
+      <Fade up duration={1000}>
+        <nav
+          data-scroll
+          data-scroll-position="top"
+          data-scroll-target="#hero"
+          data-scroll-speed="10"
+          className="flex justify-between z-20 bg-white p-4 lg:p-5 lg:px-7 rounded-full"
+        >
+          <div className="flex gap-x-10">
+            <a href="/" className="w-28 lg:w-36">
+              <img
+                src={BranchifyLogo}
+                alt="Branchify"
+                className="w-full h-full"
+              />
+            </a>
 
-          <div className="lg:flex w-full hidden my-auto">
-            <ul className="align-middle flex gap-x-9 text-gray-500 font-semibold">
-              <li className="">
-                <a href="/" className="">
-                  Discover
-                </a>
-              </li>
-              <li className="">
-                <a href="/" className="">
-                  Templates
-                </a>
-              </li>
-              <li className="">
-                <a href="/" className="">
-                  Pricing
-                </a>
-              </li>
+            <div className="lg:flex w-full hidden my-auto">
+              <ul className="align-middle flex gap-x-9 text-gray-500 font-semibold">
+                <li className="">
+                  <a href="/" className="">
+                    Discover
+                  </a>
+                </li>
+                <li className="">
+                  <a href="/" className="">
+                    Templates
+                  </a>
+                </li>
+                <li className="">
+                  <a href="/" className="">
+                    Pricing
+                  </a>
+                </li>
 
-              <li className="">
-                <a href="/" className="">
-                  Learn
-                </a>
-              </li>
-            </ul>
+                <li className="">
+                  <a href="/" className="">
+                    Learn
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
 
-        {/* AUTH LINKS + MENUBAR */}
-        <div className="my-auto flex gap-x-5">
-          <a
-            className="my-auto bg-blueBlack p-3 lg:px-10 text-white text-sm rounded-xl"
-            href="/"
-          >
-            Sign up for free
-          </a>
-          <a className="my-auto text-sm" href="/">
-            Log in
-          </a>
+          {/* AUTH LINKS + MENUBAR */}
+          <div className="my-auto flex gap-x-5">
+            <a
+              className="my-auto bg-blueBlack p-3 lg:px-10 text-white text-sm rounded-xl"
+              href="/"
+            >
+              Sign up for free
+            </a>
+            <a className="my-auto text-sm" href="/">
+              Log in
+            </a>
 
-          {/* MENUBAR (OPEN) */}
-          <div
-            className={`my-auto cursor-pointer lg:hidden ${
-              isMenuOpen && "bg-branchifyPinkDarker"
-            } p-2 rounded-full`}
-          >
-            {!isMenuOpen && (
-              <Fade duration={300}>
-                <MdOutlineMenu
-                  size={32}
-                  className={`${isMenuOpen && "hidden"}`}
-                  onClick={() => setIsMenuOpen(true)}
-                />
-              </Fade>
-            )}
+            {/* MENUBAR (OPEN) */}
+            <div
+              className={`my-auto cursor-pointer lg:hidden ${
+                isMenuOpen && "bg-branchifyPinkDarker"
+              } p-2 rounded-full`}
+            >
+              {!isMenuOpen && (
+                <Fade duration={300}>
+                  <MdOutlineMenu
+                    size={32}
+                    className={`${isMenuOpen && "hidden"}`}
+                    onClick={() => setIsMenuOpen(true)}
+                  />
+                </Fade>
+              )}
 
-            {isMenuOpen && (
-              <Fade duration={300}>
-                <MdClose
-                  size={32}
-                  className="text-white"
-                  onClick={() => setIsMenuOpen(false)}
-                />
-              </Fade>
-            )}
+              {isMenuOpen && (
+                <Fade duration={300}>
+                  <MdClose
+                    size={32}
+                    className="text-white"
+                    onClick={() => setIsMenuOpen(false)}
+                  />
+                </Fade>
+              )}
+            </div>
           </div>
-        </div>
-      </nav>
+        </nav>
+      </Fade>
     </div>
   );
 }
