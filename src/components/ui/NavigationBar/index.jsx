@@ -8,33 +8,17 @@ import BranchifyLogo from "../../../../src/assets/logos/logobranchify.svg";
 function NavigationBar({}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // USEEFFECT HOOK: Listen for when page is at the top so navbar can become visible
-  useEffect(() => {
-    console.log((window.scrollY = "px"));
-  }, [window.scrollY]);
-
-  // STICKY NAV CONFIG
-  const [stickyNavbar, setStickyNavbar] = useState("");
-  function handleNavStick() {
-    // Check if window is undefined
-    if (window !== undefined) {
-      window.scrollY > 200
-        ? setStickyNavbar("fixed top-0 left-0 z-50")
-        : setStickyNavbar("relative");
-    }
+  function handleScroll(event) {
+    console.log("SCROLL EVENT:", event);
   }
+
   useEffect(() => {
-    // Add a scoll event listener to window
-    window.addEventListener("scroll", handleNavStick);
+    window.addEventListener("scroll", handleScroll);
 
-    // Remove event listener from window
-    return () => {
-      window.removeEventListener("scroll", handleNavStick);
-    };
-  });
-
+    // return window.removeEventListener("scroll", handleScroll);
+  }, []);
   return (
-    <div className={`${stickyNavbar}`}>
+    <div>
       {/* MOBILE NAVBAR */}
       {isMenuOpen && (
         <Fade right duration={500} opposite={true}>
@@ -79,11 +63,12 @@ function NavigationBar({}) {
       {/* DESKTOP NAVBAR */}
       <Fade up duration={1000}>
         <nav
-          data-scroll
-          data-scroll-position="top"
-          data-scroll-target="#hero"
-          data-scroll-speed="10"
-          className="flex justify-between z-20 bg-white p-4 lg:p-5 lg:px-7 rounded-full"
+          // data-scroll
+          // data-scroll-position="top"
+          // data-scroll-target="#hero"
+          // data-scroll-speed="10"
+          className="flex justify-between bg-white p-4 lg:p-5 lg:px-7 rounded-full"
+          // style={{ position: "sticky", top: 0 }}
         >
           <div className="flex gap-x-10">
             <a href="/" className="w-28 lg:w-36">
